@@ -10,7 +10,8 @@ get_record(id) = record {
 get_external_record(id) = record {
     response := http.send({
         "method": "get",
-        "url": "https://raw.githubusercontent.com/lacedw/policies/master/external.json"
+        "url": "https://raw.githubusercontent.com/lacedw/policies/master/external.json",
+        "force_json_decode": true
     })
     record := response.body.records[_]
     record.id == id
