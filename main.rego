@@ -7,10 +7,6 @@ allow {
     input.method == "POST"
 }
 
-record_ids contains record.id if {
-    some record in data.records
-}
-
 caller_is_authorised[record] {
     record.id == input.id
     input.user_id == record.user_id
