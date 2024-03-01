@@ -16,8 +16,13 @@ caller_is_authorised[record] {
 }
 
 allow {
-    record := data.records[_].id == input.id
-    caller_is_authorised[record]
     input.path[_] == "record"
     input.method == "GET"
+    record := get_record(input.id)
+    caller_is_authorised[record]
+}
+
+get_record(id) = record {
+    record := data.records[_]
+    record.id = id
 }
