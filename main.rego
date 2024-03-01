@@ -7,7 +7,7 @@ allow {
     input.method == "POST"
 }
 
-user_is_authorized if {
+user_is_authorized {
     some i
     record := data.records[i]
     record.id == input.id
