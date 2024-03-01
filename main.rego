@@ -20,7 +20,7 @@ caller_is_authorised {
 allow {
     input.path[_] == "record"
     input.method == "GET"
-    caller_is_authorised[record]
+    caller_is_authorised
 }
 
 get_record(id) = record {
