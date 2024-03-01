@@ -3,7 +3,8 @@ package policies.main
 default allow = false
 
 get_record(id) = record {
-    record := data.records[_].id = id
+    record := data.records[_]
+    record.id == id
 }
 
 get_external_record(id) = record {
