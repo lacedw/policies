@@ -8,11 +8,11 @@ allow {
 }
 
 caller_is_authorised[record] {
-    input.user_id == record.user_id
+    record.user_id == input.user_id
 }
 
 caller_is_authorised[record] {
-    record.actor_ids[_] == input.actor_id
+    some i; record.actor_ids[i] == input.actor_id
 }
 
 allow {
