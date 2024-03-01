@@ -37,11 +37,11 @@ caller_is_authorised_external {
     record.user_id == input.user_id
 }
 
-external_in_path = false {
+external_in_path {
     input.path[_] == "external"
 }
 
-record_in_path = false {
+record_in_path {
     input.path[_] == "record"
 }
 
