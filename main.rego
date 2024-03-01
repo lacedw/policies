@@ -37,8 +37,8 @@ caller_is_authorised_external {
     record.user_id == input.user_id
 }
 
-arr_not_contains(arr, value) {
-    not arr[_] == value
+external = false {
+    input.path[_] == "external"
 }
 
 allow {
@@ -48,14 +48,14 @@ allow {
 
 allow {
     input.path[_] == "record"
-    arr_not_contains(input.path, "external")
+    not external
     input.method == "GET"
     caller_is_authorised
 }
 
 allow {
     input.path[_] == "record"
-    input.path[_] == "external"
+    external
     input.method == "GET"
     caller_is_authorised_external
 }
