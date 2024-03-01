@@ -7,18 +7,19 @@ allow {
     input.method == "POST"
 }
 
-caller_is_authorised[record] {
+caller_is_authorised {
+    record := get_record(input.id)
     record.user_id == input.user_id
 }
 
-caller_is_authorised[record] {
+caller_is_authorised {
+    record := get_record(input.id)
     some i; record.actor_ids[i] == input.actor_id
 }
 
 allow {
     input.path[_] == "record"
     input.method == "GET"
-    record := get_record(input.id)
     caller_is_authorised[record]
 }
 
