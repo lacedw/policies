@@ -37,8 +37,12 @@ caller_is_authorised_external {
     record.user_id == input.user_id
 }
 
-external = false {
+external_in_path = false {
     input.path[_] == "external"
+}
+
+record_in_path = false {
+    input.path[_] == "record"
 }
 
 allow {
@@ -47,15 +51,15 @@ allow {
 }
 
 allow {
-    input.path[_] == "record"
-    not external
+    record_in_path
+    not external_in_path
     input.method == "GET"
     caller_is_authorised
 }
 
 allow {
-    input.path[_] == "record"
-    external
+    record_in_path
+    external_in_path
     input.method == "GET"
     caller_is_authorised_external
 }
