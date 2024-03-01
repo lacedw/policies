@@ -48,7 +48,7 @@ allow {
 
 allow {
     input.path[_] == "record"
-    arr_not_contains("external")
+    arr_not_contains(input.path, "external")
     input.method == "GET"
     caller_is_authorised
 }
