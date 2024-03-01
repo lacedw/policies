@@ -1,0 +1,9 @@
+{
+    "records": [
+        {
+            "id": "record:2",
+            "user_id": "user:2",
+            "actor_ids": ["practitioner:2", "organisation:2"]
+        }
+    ]
+}
