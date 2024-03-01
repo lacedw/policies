@@ -44,8 +44,7 @@ allow {
 
 allow {
     input.path[_] == "record"
-    contains_external := input.path[_] == "external"
-    not contains_external
+    input.path[_] != "external"
     input.method == "GET"
     caller_is_authorised
 }
