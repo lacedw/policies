@@ -13,7 +13,8 @@ get_external_record(id) = record {
         "url": "https://raw.githubusercontent.com/lacedw/policies/master/external.json"
     })
     external_data := response.body
-    record := data.records[_].id == id
+    record := external_data.records[_]
+    record.id == id
 }
 
 caller_is_authorised {
