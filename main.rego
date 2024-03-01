@@ -7,14 +7,22 @@ allow {
     input.method == "POST"
 }
 
-user_is_authorized {
-    some i
-    record := data.records[i]
+record_ids contains record.id if {
+    some record in data.records
+}
+
+caller_is_authorised[record] {
     record.id == input.id
     input.user_id == record.user_id
 }
 
+caller_is_authorised[record] {
+    record.id == input.id
+    record.actor_ids[_] == input.actor_id
+}
+
 allow {
-    user_is_authorized
+    record := data.records[_].id == input.id
+    caller_is_authorised
     input.method == "GET"
 }
