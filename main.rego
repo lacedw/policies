@@ -3,11 +3,13 @@ package policies.main
 default allow = false
 
 allow {
-    input.path == ["users"]
+    input.path == ["record"]
     input.method == "POST"
 }
 
 allow {
-    input.path == ["users", input.user_id]
+    some record in data.records
+    record.id == input.id
+    input.user_id == record.user_id
     input.method == "GET"
 }
