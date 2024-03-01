@@ -8,12 +8,10 @@ allow {
 }
 
 caller_is_authorised[record] {
-    record.id == input.id
     input.user_id == record.user_id
 }
 
 caller_is_authorised[record] {
-    record.id == input.id
     record.actor_ids[_] == input.actor_id
 }
 
