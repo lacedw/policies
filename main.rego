@@ -24,5 +24,6 @@ caller_is_authorised[record] {
 allow {
     record := data.records[_].id == input.id
     caller_is_authorised
+    input.path[_] == "record"
     input.method == "GET"
 }
