@@ -12,8 +12,7 @@ get_external_record(id) = record {
         "method": "get",
         "url": "https://raw.githubusercontent.com/lacedw/policies/master/external.json"
     })
-    external_data := response.body
-    record := external_data.records[_]
+    record := response.body.records[_]
     record.id == id
 }
 
