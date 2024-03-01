@@ -1,5 +1,4 @@
 package policies
-import rego.v1
 
 allow if {
     input.path == ["users"]
