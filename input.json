@@ -1,0 +1,6 @@
+{
+    "id": "record:1",
+    "actor_id": "practitioner:1",
+    "path": ["record", 1],
+    "method": "GET"
+}
